@@ -81,9 +81,8 @@ export default function Footer() {
         </div>
       </div>
       <div className="mt-12 border-t border-white/10">
-        <div className={`${CONTAINER_CLASS} flex flex-col items-center justify-between gap-4 py-6 text-white/60 sm:flex-row`}>
+        <div className={`${CONTAINER_CLASS} py-6 text-center text-white/60 sm:text-left`}>
           <p>© 2025 NODO. All rights reserved.</p>
-          <div className="h-8 w-20 rounded-full border border-white/30" />
         </div>
       </div>
     </footer>
