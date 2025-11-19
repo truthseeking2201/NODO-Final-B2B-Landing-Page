@@ -139,12 +139,13 @@ export default function NodoStrategySnippet({
           </svg>
         </a>
       </div>
-      <div className="max-h-[360px] overflow-x-auto overflow-y-auto px-6 py-5">
-        <pre className="nodo-code m-0 flex flex-col gap-1 font-mono text-[13px] text-white">
+      <div className="max-h-[360px] overflow-x-hidden overflow-y-auto px-6 py-5">
+        <pre className="nodo-code m-0 flex w-full flex-col gap-1 font-mono text-[13px] text-white">
           {lines.map((line, index) => (
-            <code key={index} className="flex min-w-full gap-4 whitespace-pre text-white/90">
-              <span className="w-8 text-right text-white/30">{String(index + 1).padStart(2, '0')}</span>
+            <code key={index} className="flex min-w-0 gap-4 text-white/90">
+              <span className="w-8 shrink-0 text-right text-white/30">{String(index + 1).padStart(2, '0')}</span>
               <span
+                className="flex-1 min-w-0 whitespace-pre-wrap break-words"
                 dangerouslySetInnerHTML={{
                   __html: line ? highlightLine(line) : '&nbsp;'
                 }}
