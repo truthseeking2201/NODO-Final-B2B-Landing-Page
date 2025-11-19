@@ -52,11 +52,11 @@ export default function BenchmarksSection() {
             solutions in that domain.
           </p>
         </div>
-        <div className="grid gap-[1px] bg-[#43444A] md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-0 md:grid-cols-2 lg:grid-cols-3">
           {benchmarks.map((benchmark) => (
             <article
               key={benchmark.title}
-              className="group relative flex flex-col gap-4 bg-[#080808] px-8 py-10 transition duration-300 hover:bg-[linear-gradient(180deg,#282929_0%,#0A0A0A_100%)]"
+              className="group relative flex flex-col gap-4 border-solid border-white/25 [border-left-width:0.5px] [border-right-width:0.5px] bg-[#000000] px-8 py-10 transition duration-300 hover:z-10 focus-within:z-10 hover:border-[#43444A] hover:bg-[linear-gradient(180deg,#282929_0%,#0A0A0A_100%)]"
             >
               <div className="relative z-10 space-y-4">
                 <img src={benchmark.icon} alt="" className="h-12 w-12" />
@@ -71,10 +71,10 @@ export default function BenchmarksSection() {
                   {benchmark.protocol}
                 </p>
               </div>
-              <span className="pointer-events-none absolute left-0 top-0 hidden h-2 w-2 -translate-x-1/2 -translate-y-1/2 bg-white opacity-0 transition group-hover:block group-hover:opacity-100" />
-              <span className="pointer-events-none absolute right-0 top-0 hidden h-2 w-2 translate-x-1/2 -translate-y-1/2 bg-white opacity-0 transition group-hover:block group-hover:opacity-100" />
-              <span className="pointer-events-none absolute bottom-0 left-0 hidden h-2 w-2 -translate-x-1/2 translate-y-1/2 bg-white opacity-0 transition group-hover:block group-hover:opacity-100" />
-              <span className="pointer-events-none absolute bottom-0 right-0 hidden h-2 w-2 translate-x-1/2 translate-y-1/2 bg-white opacity-0 transition group-hover:block group-hover:opacity-100" />
+              <span className="pointer-events-none absolute left-0 top-0 hidden h-2 w-2 -translate-x-1/2 -translate-y-1/2 border border-white/70 bg-black opacity-0 transition group-hover:block group-hover:opacity-100" />
+              <span className="pointer-events-none absolute right-0 top-0 hidden h-2 w-2 translate-x-1/2 -translate-y-1/2 border border-white/70 bg-black opacity-0 transition group-hover:block group-hover:opacity-100" />
+              <span className="pointer-events-none absolute bottom-0 left-0 hidden h-2 w-2 -translate-x-1/2 translate-y-1/2 border border-white/70 bg-black opacity-0 transition group-hover:block group-hover:opacity-100" />
+              <span className="pointer-events-none absolute bottom-0 right-0 hidden h-2 w-2 translate-x-1/2 translate-y-1/2 border border-white/70 bg-black opacity-0 transition group-hover:block group-hover:opacity-100" />
             </article>
           ))}
         </div>

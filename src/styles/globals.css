@@ -59,6 +59,7 @@
     --radius-full: 999px;
     --shadow-soft: 0 24px 80px rgba(0, 0, 0, 0.45);
     --max-line-length: 68ch;
+    --btn-53-ease: cubic-bezier(0.87, 0, 0.13, 1);
   }
 
   *, *::before, *::after {
@@ -136,6 +137,89 @@
       transition-duration: 0.01ms !important;
       scroll-behavior: auto !important;
     }
+  }
+}
+
+@layer components {
+  .btn-53 {
+    --btn-53-pad-y: 20px;
+    --btn-53-pad-x: 32px;
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border-radius: 9999px;
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    padding-top: var(--btn-53-pad-y);
+    padding-bottom: var(--btn-53-pad-y);
+    padding-inline: var(--btn-53-pad-x);
+    background-color: #ffffff;
+    color: #000;
+    font-family: 'Overused Grotesk', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1.03;
+    text-align: center;
+    isolation: isolate;
+  }
+
+  .btn-53:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.8);
+  }
+
+  .btn-53__layer {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+  }
+
+  .btn-53__spacer {
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .btn-53__original {
+    background: #ffffff;
+    color: #000000;
+    transition: transform 250ms var(--btn-53-ease);
+  }
+
+  .btn-53__letters {
+    gap: 0.05em;
+    pointer-events: none;
+  }
+
+  .btn-53__letters span {
+    opacity: 0;
+    transform: translateY(-14px);
+    transition:
+      transform 250ms var(--btn-53-ease),
+      opacity 250ms ease;
+    color: #000;
+    display: inline-block;
+    font: inherit;
+  }
+
+  .btn-53__letters span:nth-child(2n) {
+    transform: translateY(14px);
+  }
+
+  .btn-53:hover .btn-53__original,
+  .btn-53:focus-visible .btn-53__original {
+    transform: translateY(100%);
+  }
+
+  .btn-53:hover .btn-53__letters span,
+  .btn-53:focus-visible .btn-53__letters span {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 

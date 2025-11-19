@@ -1,5 +1,7 @@
 import UnicornScene from 'unicornstudio-react';
 
+import AnimatedButton from '../AnimatedButton';
+
 const stats = [
   { label: 'Secured', value: '$1.2B+' },
   { label: 'Launch Time', value: '< 3 Weeks' },
@@ -31,8 +33,8 @@ export default function Hero() {
               ariaLabel="Hero background scene"
             />
           </div>
-          <div className="relative z-10 flex h-full flex-col gap-9 px-6 py-12 text-center sm:px-10 sm:py-16 lg:gap-0 lg:justify-between">
-            <div className="flex flex-col items-center justify-center gap-9 lg:flex-1">
+          <div className="relative z-10 flex h-full flex-col justify-between px-6 py-12 text-center sm:px-10 sm:py-16">
+            <div className="flex flex-col items-center gap-9 pb-9 lg:flex-1 lg:justify-center lg:pb-0">
               <h1 className="text-[32px] font-medium leading-[1.08] sm:text-[40px] sm:leading-[1.05] lg:text-[48px] lg:leading-[1.03]">
                 Institutional Grade AI-Driven <br /> Vault Architecture
               </h1>
@@ -40,12 +42,7 @@ export default function Hero() {
                 NODO delivers an AI-driven Risk Curation SDK – modular APIs and infrastructure for deploying and managing
                 vault strategies across Sui
               </p>
-              <a
-                className="inline-flex w-[131px] items-center justify-center rounded-full bg-white py-2.5 text-sm font-semibold text-black transition hover:-translate-y-0.5 sm:text-base"
-                href="#contact"
-              >
-                Launch App
-              </a>
+              <AnimatedButton label="Launch App" href="#contact" className="text-sm sm:text-base" />
             </div>
             <div className="flex flex-col gap-6 text-left lg:flex-row lg:items-end lg:justify-between lg:gap-10">
               <div className="space-y-6 lg:max-w-2xl">

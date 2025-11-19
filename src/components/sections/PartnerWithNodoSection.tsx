@@ -1,5 +1,6 @@
 import UnicornScene from 'unicornstudio-react';
 import { CONTAINER_CLASS } from '../../constants/layout';
+import AnimatedButton from '../AnimatedButton';
 
 const partnerProjectId =
   import.meta.env.VITE_PARTNER_UNICORN_PROJECT_ID?.trim() || 'MzzG66mHF5V5qMhZuRSd';
@@ -25,12 +26,11 @@ export default function PartnerWithNodoSection() {
             <p className="text-sm font-semibold tracking-[0.32px] text-white sm:text-base">
               Get SDK access or request a custom vault deployment
             </p>
-            <a
-              className="pointer-events-auto inline-flex w-[182px] items-center justify-center rounded-full bg-white px-8 py-3 text-sm font-semibold text-black transition hover:-translate-y-0.5 sm:text-base"
+            <AnimatedButton
+              label="Request Access"
               href="mailto:hello@nodo.build"
-            >
-              Request Access
-            </a>
+              className="pointer-events-auto text-sm sm:text-base"
+            />
           </div>
         </div>
       </div>

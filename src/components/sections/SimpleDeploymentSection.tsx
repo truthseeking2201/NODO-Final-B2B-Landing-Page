@@ -41,15 +41,29 @@ export default function SimpleDeploymentSection() {
           <NodoStrategySnippet />
         </div>
         <div className="grid gap-10 text-center md:grid-cols-3">
-          {deploymentSteps.map((step) => (
-            <article key={step.title} className="space-y-4">
-              <img src={step.icon} alt="" className="mx-auto h-12 w-12" />
-              <div className="space-y-2">
-                <p className="font-dm text-[18px] font-medium tracking-[-0.6px] text-white sm:text-[20px]">{step.title}</p>
-                <p className="text-sm text-white/70 tracking-[0.16px]">{step.copy}</p>
-              </div>
-            </article>
-          ))}
+          {deploymentSteps.map((step, index) => {
+            const showDivider = index < deploymentSteps.length - 1;
+            return (
+              <article key={step.title} className="relative space-y-4">
+                <img src={step.icon} alt="" className="mx-auto h-12 w-12" />
+                <div className="space-y-2">
+                  <p className="font-dm text-[18px] font-medium tracking-[-0.6px] text-white sm:text-[20px]">{step.title}</p>
+                  <p className="text-sm text-white/70 tracking-[0.16px]">{step.copy}</p>
+                </div>
+                {showDivider ? (
+                  <span
+                    aria-hidden="true"
+                    className="pointer-events-none absolute -right-5 top-1/2 hidden h-[120px] w-px -translate-y-1/2 md:block"
+                    style={{
+                      background:
+                        'linear-gradient(270deg, rgba(255, 255, 255, 0.00) 0%, #FFF 50.48%, rgba(255, 255, 255, 0.00) 100%)',
+                      filter: 'blur(0.5px)'
+                    }}
+                  />
+                ) : null}
+              </article>
+            );
+          })}
         </div>
       </div>
     </section>

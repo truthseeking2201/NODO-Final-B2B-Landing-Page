@@ -59,7 +59,7 @@ export default function NodoStrategySnippet() {
           <span className="text-white/60">Solidity · backtest adapter example</span>
         </div>
         <a
-          className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.32em] text-white transition hover:text-white/80"
+          className="inline-flex items-center gap-2 font-mono text-sm font-medium uppercase tracking-[2px] text-white leading-[normal] transition hover:text-white/80"
           href="https://github.com/nodo-labs/strategy-demo"
           target="_blank"
           rel="noreferrer"

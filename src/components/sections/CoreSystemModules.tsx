@@ -1,5 +1,6 @@
 import UnicornScene from 'unicornstudio-react';
 import { CONTAINER_CLASS, SECTION_SPACING_CLASS } from '../../constants/layout';
+import AnimatedButton from '../AnimatedButton';
 
 const modules = [
   {
@@ -79,12 +80,7 @@ export default function CoreSystemModules() {
               <p className="text-sm text-white/60">Infrastructure specialist</p>
             </div>
           </div>
-          <a
-            className="inline-flex items-center justify-center rounded-full bg-white px-6 py-2 text-sm font-semibold text-black transition hover:-translate-y-0.5"
-            href="#contact"
-          >
-            Talk Now
-          </a>
+          <AnimatedButton label="Talk Now" href="#contact" className="text-sm" />
         </div>
       </div>
     </section>
