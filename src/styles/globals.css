@@ -151,8 +151,8 @@
     overflow: hidden;
     border-radius: 9999px;
     border: 1px solid rgba(255, 255, 255, 0.35);
-    padding-top: var(--btn-53-pad-y);
-    padding-bottom: var(--btn-53-pad-y);
+    padding-top: 10px !important;
+    padding-bottom: 10px !important;
     padding-inline: var(--btn-53-pad-x);
     background-color: #ffffff;
     color: #000;
@@ -220,6 +220,11 @@
   .btn-53:focus-visible .btn-53__letters span {
     opacity: 1;
     transform: translateY(0);
+  }
+
+  .deployment-divider {
+    background: linear-gradient(270deg, rgba(255, 255, 255, 0.00) 0%, #FFF 50.48%, rgba(255, 255, 255, 0.00) 100%);
+    filter: blur(0.5px);
   }
 }
 

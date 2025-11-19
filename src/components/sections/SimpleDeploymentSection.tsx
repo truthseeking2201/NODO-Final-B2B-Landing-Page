@@ -1,3 +1,5 @@
+import { useState } from 'react';
+
 import { CONTAINER_CLASS, SECTION_SPACING_CLASS } from '../../constants/layout';
 import NodoStrategySnippet from '../visuals/NodoStrategySnippet';
 
@@ -19,7 +21,89 @@ const deploymentSteps = [
   }
 ];
 
+const vaultDeploymentCode = `import { createDeploymentPipeline, fetchArtifacts } from '@nodo/deployer';
+import { loadSecrets } from '@nodo/secrets';
+
+const pipeline = createDeploymentPipeline({
+  presets: ['delta-neutral'],
+  confirmations: 24,
+  telemetry: true,
+});
+
+async function bootstrap() {
+  const artifacts = await fetchArtifacts('v0.12.4');
+  const secrets = await loadSecrets({
+    network: 'sui:mainnet',
+    keyring: process.env.KEYRING,
+  });
+
+  return { artifacts, secrets };
+}
+
+export async function deployVault() {
+  const { artifacts, secrets } = await bootstrap();
+  const ctx = await pipeline.initialize({
+    artifacts,
+    signer: secrets.operators.primary,
+  });
+
+  await ctx.configureVault({
+    name: 'nodo-trident-vault',
+    modules: ['monitoring', 'execution', 'reconciliation'],
+    policies: {
+      withdrawal: 'guarded',
+      supplyCap: '4M',
+    },
+  });
+
+  for (const asset of ['SUI', 'USDC', 'wBTC']) {
+    await ctx.addAssetRoute({
+      asset,
+      route: 'dex',
+      slippage: '8bps',
+    });
+  }
+
+  await ctx.publish({
+    network: 'sui:mainnet',
+    auditors: ['quill', 'hashlock'],
+  });
+
+  return ctx.summary();
+}
+
+await deployVault();
+`;
+
+const snippetTabs = [
+  {
+    id: 'simulation',
+    label: 'Strategy Simulation SDK',
+    props: {
+      title: 'NODO Strategy Simulation SDK',
+      subtitle: 'Solidity · backtest adapter example',
+      linkLabel: 'GitHub',
+      linkHref: 'https://github.com/nodo-labs/strategy-demo'
+    }
+  },
+  {
+    id: 'deployment',
+    label: 'Vault Deployment Mode',
+    props: {
+      title: 'Vault Deployment Mode',
+      subtitle: 'Sui deployment orchestration sample',
+      linkLabel: 'Docs',
+      linkHref: 'https://docs.nodo.so',
+      code: vaultDeploymentCode
+    }
+  }
+] as const;
+
 export default function SimpleDeploymentSection() {
+  type TabId = (typeof snippetTabs)[number]['id'];
+  const [activeTab, setActiveTab] = useState<TabId>('simulation');
+  const activeSnippet = snippetTabs.find((tab) => tab.id === activeTab) ?? snippetTabs[0];
+
   return (
     <section className={SECTION_SPACING_CLASS} id="deployment">
       <div className={`${CONTAINER_CLASS} space-y-6 text-center`}>
@@ -28,18 +112,27 @@ export default function SimpleDeploymentSection() {
           Automate smart contract deployment, configuration of vault products on Sui.
         </p>
         <div className="flex flex-wrap items-center justify-center gap-4">
-          <span className="inline-flex w-[218px] items-center justify-center rounded-full bg-white px-6 py-2 text-xs font-semibold text-black sm:text-sm">
-            Strategy Simulation SDK
-          </span>
-          <span className="inline-flex w-[227px] items-center justify-center rounded-full border border-white/40 px-6 py-2 text-xs text-white sm:text-sm">
-            Vault Deployment Mode
-          </span>
+          {snippetTabs.map((tab) => {
+            const isActive = activeTab === tab.id;
+            const widthClass = tab.id === 'simulation' ? 'w-[218px]' : 'w-[227px]';
+            return (
+              <button
+                key={tab.id}
+                type="button"
+                onClick={() => setActiveTab(tab.id)}
+                aria-pressed={isActive}
+                className={`inline-flex ${widthClass} items-center justify-center rounded-full px-6 py-2 text-xs font-semibold transition sm:text-sm ${
+                  isActive ? 'bg-white text-black' : 'border border-white/40 text-white hover:border-white/60'
+                }`}
+              >
+                {tab.label}
+              </button>
+            );
+          })}
         </div>
       </div>
       <div className={`${CONTAINER_CLASS} mt-10 space-y-10`}>
-        <div className="overflow-hidden rounded-[40px] border border-white/10 bg-gradient-to-b from-white/10 to-transparent p-6">
-          <NodoStrategySnippet />
-        </div>
+        <NodoStrategySnippet {...activeSnippet.props} />
         <div className="grid gap-10 text-center md:grid-cols-3">
           {deploymentSteps.map((step, index) => {
             const showDivider = index < deploymentSteps.length - 1;
@@ -53,12 +146,7 @@ export default function SimpleDeploymentSection() {
                 {showDivider ? (
                   <span
                     aria-hidden="true"
-                    className="pointer-events-none absolute -right-5 top-1/2 hidden h-[120px] w-px -translate-y-1/2 md:block"
-                    style={{
-                      background:
-                        'linear-gradient(270deg, rgba(255, 255, 255, 0.00) 0%, #FFF 50.48%, rgba(255, 255, 255, 0.00) 100%)',
-                      filter: 'blur(0.5px)'
-                    }}
+                    className="pointer-events-none absolute -right-5 top-1/2 hidden h-[120px] w-px -translate-y-1/2 deployment-divider md:block"
                   />
                 ) : null}
               </article>
