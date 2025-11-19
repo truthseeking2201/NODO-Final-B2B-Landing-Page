@@ -56,7 +56,7 @@ export default function UnifiedArchitectureSection() {
           </div>
         </div>
         <div className="flex flex-col items-center gap-6">
-          <div className="flex w-full max-w-3xl flex-col gap-6 rounded-[999px] bg-white px-6 py-5 text-black sm:flex-row sm:items-center sm:justify-between">
+          <div className="flex w-full max-w-3xl flex-col gap-6 rounded-[24px] bg-white px-6 py-5 text-black sm:flex-row sm:items-center sm:justify-between">
             <div className="flex items-center gap-4">
               <div className="h-14 w-14 overflow-hidden rounded-full border-4 border-black/5">
                 <img src="/images/alden.png" alt="Alden" className="h-full w-full object-cover" />

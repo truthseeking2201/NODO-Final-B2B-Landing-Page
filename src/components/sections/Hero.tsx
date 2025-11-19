@@ -31,8 +31,8 @@ export default function Hero() {
               ariaLabel="Hero background scene"
             />
           </div>
-          <div className="relative z-10 flex h-full flex-col justify-between px-10 py-16 text-center">
-            <div className="flex flex-1 flex-col items-center justify-center gap-9">
+          <div className="relative z-10 flex h-full flex-col gap-9 px-6 py-12 text-center sm:px-10 sm:py-16 lg:gap-0 lg:justify-between">
+            <div className="flex flex-col items-center justify-center gap-9 lg:flex-1">
               <h1 className="text-[32px] font-medium leading-[1.08] sm:text-[40px] sm:leading-[1.05] lg:text-[48px] lg:leading-[1.03]">
                 Institutional Grade AI-Driven <br /> Vault Architecture
               </h1>
@@ -49,10 +49,10 @@ export default function Hero() {
             </div>
             <div className="flex flex-col gap-6 text-left lg:flex-row lg:items-end lg:justify-between lg:gap-10">
               <div className="space-y-6 lg:max-w-2xl">
-                <div className="grid gap-10 sm:grid-cols-3 sm:gap-4">
+                <div className="grid gap-6 sm:grid-cols-3 sm:gap-6 lg:gap-8">
                   {stats.map((stat) => (
-                    <article key={stat.label} className="space-y-2">
-                      <p className="bg-gradient-to-r from-white to-[#898989] bg-clip-text font-mono text-center text-[10px] font-medium uppercase tracking-[1px] text-transparent whitespace-nowrap sm:text-[12px]">
+                    <article key={stat.label} className="flex flex-col items-center gap-1 text-center">
+                      <p className="bg-gradient-to-r from-white to-[#898989] bg-clip-text font-mono text-[10px] font-medium uppercase tracking-[1px] text-transparent whitespace-nowrap sm:text-[12px]">
                         {stat.label}
                       </p>
                       <p className="text-[22px] font-medium leading-[1.2] tracking-[-0.84px] text-white sm:text-[24px] lg:text-[28px]">
@@ -69,11 +69,11 @@ export default function Hero() {
                   ))}
                 </div>
               </div>
-              <div className="flex flex-wrap items-center gap-6 text-white/70 sm:justify-start lg:justify-end">
-                <span className="inline-flex justify-center bg-gradient-to-r from-white to-[#898989] bg-clip-text font-mono text-center text-[10px] font-medium uppercase tracking-[1px] text-transparent sm:text-[12px]">
+              <div className="flex flex-col items-center gap-3 text-white/70 sm:items-center lg:items-end">
+                <span className="bg-gradient-to-r from-white to-[#898989] bg-clip-text font-mono text-center text-[10px] font-medium uppercase tracking-[1px] text-transparent sm:text-[12px]">
                   SECURITY. AUDITED BY
                 </span>
-                <div className="flex flex-wrap items-center justify-center gap-6">
+                <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6">
                   {securityPartners.map((partner) => (
                     <img
                       key={partner.name}

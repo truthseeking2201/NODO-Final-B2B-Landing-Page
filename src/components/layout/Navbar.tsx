@@ -9,7 +9,7 @@ const navLinks = [
 
 export default function Navbar() {
   return (
-    <header className="py-6">
+    <header className="sticky top-0 z-50 border-b border-white/5 bg-black/70 py-4 backdrop-blur-md backdrop-saturate-150">
       <div className={`${CONTAINER_CLASS} flex items-center justify-between gap-6`}>
         <a className="inline-flex items-center" href="#hero" aria-label="NODO home">
           <img src="/images/nodo-logo.png" alt="NODO" className="h-8 w-auto" />

@@ -66,7 +66,7 @@ export default function CoreSystemModules() {
             </article>
           ))}
         </div>
-        <div className="flex flex-col gap-6 rounded-[999px] border border-white/10 bg-white/5 px-8 py-6 text-left lg:flex-row lg:items-center lg:justify-between">
+        <div className="flex flex-col gap-6 rounded-[24px] border border-white/10 bg-white/5 px-8 py-6 text-left sm:rounded-[48px] lg:flex-row lg:items-center lg:justify-between lg:rounded-[999px]">
           <p className="bg-gradient-to-r from-white to-[#898989] bg-clip-text font-mono text-[16px] uppercase tracking-[1px] text-transparent sm:text-[18px] lg:text-[20px]">
             Want to know more?
           </p>
