@@ -223,7 +223,9 @@
   }
 
   .deployment-divider {
-    background: linear-gradient(270deg, rgba(255, 255, 255, 0.00) 0%, #FFF 50.48%, rgba(255, 255, 255, 0.00) 100%);
+    width: 1px;
+    border-radius: 999px;
+    background: linear-gradient(90deg, rgba(67, 68, 74, 0) 0%, #43444A 50%, rgba(67, 68, 74, 0) 100%);
     filter: blur(0.5px);
   }
 }

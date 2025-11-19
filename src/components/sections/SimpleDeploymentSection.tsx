@@ -146,7 +146,7 @@ export default function SimpleDeploymentSection() {
                 {showDivider ? (
                   <span
                     aria-hidden="true"
-                    className="pointer-events-none absolute -right-5 top-1/2 hidden h-[120px] w-px -translate-y-1/2 deployment-divider md:block"
+                    className="pointer-events-none absolute -right-5 top-1/2 hidden h-[112.524px] w-px -translate-y-1/2 deployment-divider md:block"
                   />
                 ) : null}
               </article>
