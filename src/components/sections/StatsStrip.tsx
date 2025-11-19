@@ -15,15 +15,13 @@ const securityPartners = [
 export default function StatsStrip() {
   return (
     <section className="pb-16 pt-4">
-      <div className={`${CONTAINER_CLASS} space-y-8`}>
-        <div className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
-          <div className="grid gap-6 sm:grid-cols-3">
+      <div className={`${CONTAINER_CLASS} mx-auto w-full max-w-6xl px-6`}>
+        <div className="flex flex-col gap-10 lg:flex-row lg:items-center lg:justify-between">
+          <div className="flex flex-col gap-8 sm:flex-row sm:justify-between sm:gap-10 lg:gap-16">
             {stats.map((stat) => (
-              <article key={stat.label} className="space-y-2">
-                <p className="bg-gradient-to-r from-white to-[#898989] bg-clip-text font-mono text-[10px] uppercase tracking-[1px] text-transparent sm:text-[12px]">
-                  {stat.label}
-                </p>
-                <p className="text-[22px] font-medium leading-[1.2] tracking-[-0.84px] text-white sm:text-[24px] lg:text-[28px]">
+              <article key={stat.label} className="flex flex-col gap-2 text-left sm:text-left">
+                <p className="text-[10px] uppercase tracking-[0.2em] text-white/60 sm:text-xs">{stat.label}</p>
+                <p className="text-2xl font-semibold leading-tight text-white sm:text-[28px]">
                   {stat.value.includes('$') ? (
                     <>
                       <span className="text-white/50">$</span>
@@ -36,11 +34,9 @@ export default function StatsStrip() {
               </article>
             ))}
           </div>
-          <div className="space-y-3 text-center lg:text-right">
-            <p className="bg-gradient-to-r from-white to-[#898989] bg-clip-text font-mono text-[10px] uppercase tracking-[0.2em] text-transparent sm:text-[12px]">
-              SECURITY. AUDITED BY
-            </p>
-            <div className="flex flex-wrap items-center justify-center gap-8 lg:justify-end">
+          <div className="flex flex-col items-center gap-4 sm:flex-row sm:justify-center lg:justify-end">
+            <span className="text-[10px] uppercase tracking-[0.2em] text-white/60 sm:text-xs">Security. Audited by</span>
+            <div className="flex items-center gap-4">
               {securityPartners.map((partner) => (
                 <img
                   key={partner.name}

@@ -14,9 +14,16 @@ export default function Navbar() {
         <a className="inline-flex items-center" href="#hero" aria-label="NODO home">
           <img src="/images/nodo-logo.png" alt="NODO" className="h-8 w-auto" />
         </a>
-        <nav className="hidden items-center gap-10 text-sm text-white/70 lg:flex" aria-label="Primary">
-          {navLinks.map((link) => (
-            <a key={link.label} href={link.href} className="tracking-[0.2em] transition hover:text-white">
+        <nav
+          className="hidden items-center gap-12 text-xs font-semibold uppercase tracking-[0.45em] text-white/40 lg:flex"
+          aria-label="Primary"
+        >
+          {navLinks.map((link, index) => (
+            <a
+              key={link.label}
+              href={link.href}
+              className={`transition ${index === 0 ? 'text-white' : ''} hover:text-white`}
+            >
               {link.label}
             </a>
           ))}
