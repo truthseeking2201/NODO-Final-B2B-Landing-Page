@@ -17,7 +17,7 @@ export default function AlertMonitoringSection() {
           </div>
         </div>
         <NodoOnchainAlertFlow />
-        <div className="flex flex-col items-center gap-3 text-center">
+        <div className="flex flex-col items-center gap-3 text-center translate-y-8 sm:translate-y-0">
           <p className="bg-gradient-to-r from-white to-[#898989] bg-clip-text font-mono text-[10px] uppercase tracking-[1px] text-transparent sm:text-[12px]">
             Secured by
           </p>

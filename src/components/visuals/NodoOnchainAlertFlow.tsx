@@ -43,6 +43,17 @@ export default function NodoOnchainAlertFlow() {
           overflow: visible;
         }
 
+        @media (max-width: 640px) {
+          .diagram-container {
+            overflow: visible;
+          }
+
+          .nodo-svg {
+            transform: scale(1.4);
+            transform-origin: center;
+          }
+        }
+
         .glow-filter {
           filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.4)) drop-shadow(0 0 10px rgba(255, 255, 255, 0.2));
         }
