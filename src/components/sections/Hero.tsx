@@ -1,6 +1,18 @@
-import UnicornScene from 'unicornstudio-react';
+import { useEffect } from 'react';
 
 import AnimatedButton from '../AnimatedButton';
+
+declare global {
+  interface Window {
+    UnicornStudio?: {
+      init?: () => void;
+      isInitialized?: boolean;
+    };
+  }
+}
+
+const UNICORN_SCRIPT_SRC =
+  'https://cdn.jsdelivr.net/gh/hiunicornstudio/unicornstudio.js@v1.4.35/dist/unicornStudio.umd.js';
 
 const stats = [
   { label: 'Secured', value: '$1.2B+' },
@@ -14,24 +26,55 @@ const securityPartners = [
   { name: 'Hypernative', src: '/images/logo-hypernative.png', width: 140 }
 ];
 
-const heroProjectId = import.meta.env.VITE_HERO_UNICORN_PROJECT_ID?.trim() || '4pakEuw9jP3bn9LCI0sZ';
+const heroProjectId = 'iBEiQV4wVUsoaFktc8Kf';
 
 export default function Hero() {
+  useEffect(() => {
+    const initializeStudio = () => {
+      if (window.UnicornStudio && typeof window.UnicornStudio.init === 'function') {
+        window.UnicornStudio.init();
+        window.UnicornStudio.isInitialized = true;
+      }
+    };
+
+    if (window.UnicornStudio?.isInitialized) {
+      initializeStudio();
+      return;
+    }
+
+    if (window.UnicornStudio && typeof window.UnicornStudio.init === 'function') {
+      initializeStudio();
+      return;
+    }
+
+    const existingScript = document.querySelector<HTMLScriptElement>(`script[src="${UNICORN_SCRIPT_SRC}"]`);
+    if (existingScript) {
+      const handleLoad = () => {
+        existingScript.removeEventListener('load', handleLoad);
+        initializeStudio();
+      };
+      existingScript.addEventListener('load', handleLoad);
+      return () => existingScript.removeEventListener('load', handleLoad);
+    }
+
+    const script = document.createElement('script');
+    script.src = UNICORN_SCRIPT_SRC;
+    script.async = true;
+    script.dataset.unicornstudio = 'true';
+    script.onload = initializeStudio;
+    (document.head || document.body).appendChild(script);
+
+    return () => {
+      script.onload = null;
+    };
+  }, []);
+
   return (
     <section className="py-0" id="hero">
       <div className="mx-auto w-full max-w-[1376px] px-4 lg:px-0">
         <div className="relative h-[700px] overflow-hidden rounded-none border border-white/15 bg-black/70">
           <div className="pointer-events-none absolute inset-0">
-            <UnicornScene
-              key={heroProjectId}
-              projectId={heroProjectId}
-              width="100%"
-              height="700px"
-              lazyLoad
-              scale={1}
-              dpi={2}
-              ariaLabel="Hero background scene"
-            />
+            <div data-us-project={heroProjectId} className="h-full w-full" style={{ width: '100%', height: '100%' }} />
           </div>
           <div className="relative z-10 flex h-full flex-col justify-between px-6 py-12 text-center sm:px-10 sm:py-16">
             <div className="flex flex-col items-center gap-9 pb-9 lg:flex-1 lg:justify-center lg:pb-0">
