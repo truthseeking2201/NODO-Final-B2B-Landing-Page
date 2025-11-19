@@ -14,15 +14,15 @@ export default function Navbar() {
         <a className="inline-flex items-center" href="#hero" aria-label="NODO home">
           <img src="/images/nodo-logo.png" alt="NODO" className="h-8 w-auto" />
         </a>
-        <nav
-          className="hidden items-center gap-12 text-xs font-semibold uppercase tracking-[0.45em] text-white/40 lg:flex"
-          aria-label="Primary"
-        >
+        <nav className="hidden items-center gap-12 lg:flex" aria-label="Primary">
           {navLinks.map((link, index) => (
             <a
               key={link.label}
               href={link.href}
-              className={`transition ${index === 0 ? 'text-white' : ''} hover:text-white`}
+              aria-current={index === 0 ? 'page' : undefined}
+              className={`text-center font-mono text-[14px] font-normal uppercase leading-[140%] tracking-[1.26px] text-white transition-opacity focus-visible:opacity-100 ${
+                index === 0 ? 'opacity-100' : 'opacity-50 hover:opacity-100'
+              }`}
             >
               {link.label}
             </a>

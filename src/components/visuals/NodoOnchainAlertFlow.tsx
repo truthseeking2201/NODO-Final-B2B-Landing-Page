@@ -2,7 +2,6 @@ export default function NodoOnchainAlertFlow() {
   return (
     <div className="nodo-alert-root">
       <style>{`
-        /* Import Inter & DM Mono */
         @import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Inter:wght@300;400;500;600;700&display=swap');
 
         :root {
@@ -15,9 +14,8 @@ export default function NodoOnchainAlertFlow() {
           --text-primary: #ffffff;
           --text-secondary: #AAAAAA;
           --text-badge: #CCCCCC;
-
-          --font-body: 'Inter', sans-serif;
-          --font-mono: 'DM Mono', monospace;
+          --font-body: "Inter", sans-serif;
+          --font-mono: "DM Mono", monospace;
         }
 
         .nodo-alert-root {
@@ -28,7 +26,7 @@ export default function NodoOnchainAlertFlow() {
           color: var(--text-primary);
           font-family: var(--font-body);
           padding: 0;
-          overflow: hidden;
+          overflow: visible;
         }
 
         .diagram-container {
@@ -59,6 +57,12 @@ export default function NodoOnchainAlertFlow() {
           100% { r: 2; opacity: 0.6; }
         }
 
+        @keyframes ripple-expand {
+          0% { transform: scale(0.2); opacity: 0; }
+          15% { opacity: 0.8; stroke-width: 1.5; }
+          100% { transform: scale(3.5); opacity: 0; stroke-width: 0; }
+        }
+
         .flow-line-base {
           fill: none;
           stroke: var(--stroke-dark);
@@ -72,7 +76,7 @@ export default function NodoOnchainAlertFlow() {
           stroke-dasharray: 6 6;
           animation: flow-dash 0.8s linear infinite;
           opacity: 0.7;
-          filter: drop-shadow(0 0 3px rgba(255, 255, 255, 0.5));
+          filter: drop-shadow(0 0 3px rgba(255,255,255,0.5));
         }
 
         .node-circle {
@@ -86,17 +90,36 @@ export default function NodoOnchainAlertFlow() {
           animation: pulse-node 2s ease-out infinite;
         }
 
+        .bg-ripple {
+          fill: none;
+          stroke: #FFFFFF;
+          stroke-width: 1;
+          transform-box: fill-box;
+          transform-origin: center;
+          opacity: 0;
+          animation: ripple-expand 6s linear infinite;
+          filter: url(#glowFilter);
+        }
+
+        .bg-static-circle {
+          fill: none;
+          stroke: #444444;
+          stroke-width: 0.5;
+          stroke-dasharray: 4 4;
+          opacity: 0.7;
+        }
+
         .card-rect {
           fill: var(--bg-card);
           stroke: var(--stroke-medium);
           stroke-width: 1;
           transition: all 0.3s ease-out;
-          filter: drop-shadow(0px 2px 6px rgba(0, 0, 0, 0.5));
+          filter: drop-shadow(0px 2px 6px rgba(0,0,0,0.5));
         }
 
         .card-group:hover .card-rect {
           stroke: var(--accent-glow);
-          filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.4)) drop-shadow(0 4px 10px rgba(0, 0, 0, 0.6));
+          filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.4)) drop-shadow(0px 4px 10px rgba(0,0,0,0.6));
           transform: translateY(-2px);
         }
 
@@ -131,17 +154,21 @@ export default function NodoOnchainAlertFlow() {
           stroke-width: 1.8;
           stroke-linecap: round;
           stroke-linejoin: round;
-          filter: drop-shadow(0 0 2px rgba(255, 255, 255, 0.4));
+          filter: drop-shadow(0 0 2px rgba(255,255,255,0.4));
         }
 
         .icon-fill {
           fill: var(--accent-glow);
-          filter: drop-shadow(0 0 2px rgba(255, 255, 255, 0.4));
+          filter: drop-shadow(0 0 2px rgba(255,255,255,0.4));
         }
       `}</style>
 
       <div className="diagram-container">
-        <svg className="nodo-svg" viewBox="0 0 1040 510" preserveAspectRatio="xMidYMid meet">
+        <svg
+          className="nodo-svg"
+          viewBox="0 0 1040 510"
+          preserveAspectRatio="xMidYMid meet"
+        >
           <defs>
             <linearGradient id="line-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
               <stop offset="0%" stopColor="#ffffff" stopOpacity="0.2" />
@@ -149,11 +176,10 @@ export default function NodoOnchainAlertFlow() {
               <stop offset="100%" stopColor="#ffffff" stopOpacity="0.2" />
             </linearGradient>
 
-            <filter id="card-glow" x="-50%" y="-50%" width="200%" height="200%">
-              <feGaussianBlur in="SourceGraphic" stdDeviation="4" result="blur" />
-              <feOffset dx="0" dy="0" result="offsetblur" />
-              <feFlood floodColor="white" floodOpacity="0.3" result="floodColor" />
-              <feComposite in="floodColor" in2="offsetblur" operator="in" result="glow" />
+            <filter id="glowFilter" x="-50%" y="-50%" width="200%" height="200%">
+              <feGaussianBlur in="SourceGraphic" stdDeviation="5" result="blur" />
+              <feFlood floodColor="#FFFFFF" floodOpacity="0.8" result="flood" />
+              <feComposite in="flood" in2="blur" operator="in" result="glow" />
               <feMerge>
                 <feMergeNode in="glow" />
                 <feMergeNode in="SourceGraphic" />
@@ -166,6 +192,14 @@ export default function NodoOnchainAlertFlow() {
             <path id="flowPath4-5" d="M 520 430 L 520 445 C 520 455, 310 455, 310 465 L 310 480" />
             <path id="flowPath4-6" d="M 520 430 L 520 445 C 520 455, 730 455, 730 465 L 730 480" />
           </defs>
+
+          <g transform="translate(520, 250)">
+            <circle r="80" className="bg-ripple" style={{ animationDelay: '0s' }} />
+            <circle r="80" className="bg-ripple" style={{ animationDelay: '2s' }} />
+            <circle r="80" className="bg-ripple" style={{ animationDelay: '4s' }} />
+            <circle r="180" className="bg-static-circle" />
+            <circle r="350" className="bg-static-circle" opacity="0.4" />
+          </g>
 
           <use href="#flowPath1-2" className="flow-line-active" />
           <circle r="3.5" fill="white">
@@ -221,9 +255,9 @@ export default function NodoOnchainAlertFlow() {
             <circle cx="210" cy="0" r="1" className="node-circle" />
             <circle cx="210" cy="0" r="2.5" className="node-pulse" />
             <g transform="translate(30, 24)">
-              <path className="icon-stroke" d="M16 4 L29 26 H3 Z" />
-              <line className="icon-stroke" x1="16" y1="12" x2="16" y2="18" />
-              <circle className="icon-fill" cx="16" cy="23" r="1.5" />
+               <path className="icon-stroke" d="M16 4 L29 26 H3 Z" />
+               <line className="icon-stroke" x1="16" y1="12" x2="16" y2="18" />
+               <circle className="icon-fill" cx="16" cy="23" r="1.5" />
             </g>
             <text x="80" y="28" className="txt-badge">STAGE 02</text>
             <text x="80" y="48" className="txt-title">Immediate Alert & Response</text>
@@ -237,8 +271,8 @@ export default function NodoOnchainAlertFlow() {
             <circle cx="210" cy="0" r="1" className="node-circle" />
             <circle cx="210" cy="0" r="2.5" className="node-pulse" />
             <g transform="translate(30, 24)">
-              <circle className="icon-stroke" cx="16" cy="16" r="11" />
-              <polyline className="icon-stroke" points="16 10 16 16 20 16" />
+               <circle className="icon-stroke" cx="16" cy="16" r="11" />
+               <polyline className="icon-stroke" points="16 10 16 16 20 16" />
             </g>
             <text x="80" y="28" className="txt-badge">STAGE 03</text>
             <text x="80" y="48" className="txt-title">Decision Window</text>
@@ -252,12 +286,12 @@ export default function NodoOnchainAlertFlow() {
             <circle cx="210" cy="0" r="1" className="node-circle" />
             <circle cx="210" cy="0" r="2.5" className="node-pulse" />
             <g transform="translate(30, 24)">
-              <line className="icon-stroke" x1="4" y1="8" x2="28" y2="8" />
-              <line className="icon-stroke" x1="4" y1="16" x2="28" y2="16" />
-              <line className="icon-stroke" x1="4" y1="24" x2="28" y2="24" />
-              <circle className="icon-fill" cx="10" cy="8" r="2" />
-              <circle className="icon-fill" cx="22" cy="16" r="2" />
-              <circle className="icon-fill" cx="14" cy="24" r="2" />
+               <line className="icon-stroke" x1="4" y1="8" x2="28" y2="8" />
+               <line className="icon-stroke" x1="4" y1="16" x2="28" y2="16" />
+               <line className="icon-stroke" x1="4" y1="24" x2="28" y2="24" />
+               <circle className="icon-fill" cx="10" cy="8" r="2" />
+               <circle className="icon-fill" cx="22" cy="16" r="2" />
+               <circle className="icon-fill" cx="14" cy="24" r="2" />
             </g>
             <text x="80" y="28" className="txt-badge">STAGE 04</text>
             <text x="80" y="48" className="txt-title">Design Implementation</text>
@@ -269,10 +303,10 @@ export default function NodoOnchainAlertFlow() {
           <g className="card-group" transform="translate(150, 460)">
             <rect className="card-rect" x="0" y="0" width="320" height="80" rx="6" />
             <g transform="translate(30, 24)">
-              <path className="icon-stroke" d="M22 12c0-5.5-4.5-10-10-10S2 6.5 2 12" />
-              <path className="icon-stroke" d="M2 20c0 5.5 4.5 10 10 10s10-4.5 10-10" />
-              <polyline className="icon-stroke" points="22 8 22 12 18 12" />
-              <polyline className="icon-stroke" points="2 24 2 20 6 20" />
+               <path className="icon-stroke" d="M22 12c0-5.5-4.5-10-10-10S2 6.5 2 12" />
+               <path className="icon-stroke" d="M2 20c0 5.5 4.5 10 10 10s10-4.5 10-10" />
+               <polyline className="icon-stroke" points="22 8 22 12 18 12" />
+               <polyline className="icon-stroke" points="2 24 2 20 6 20" />
             </g>
             <text x="80" y="28" className="txt-badge">STAGE 05</text>
             <text x="80" y="48" className="txt-title">Monitoring & Recovering</text>
@@ -282,7 +316,7 @@ export default function NodoOnchainAlertFlow() {
           <g className="card-group" transform="translate(570, 460)">
             <rect className="card-rect" x="0" y="0" width="320" height="80" rx="6" />
             <g transform="translate(30, 24)">
-              <path className="icon-stroke" d="M24 4H8C5.8 4 4 5.8 4 8v12c0 2.2 1.8 4 4 4h12l6 6V8c0-2.2-1.8-4-4-4z" />
+               <path className="icon-stroke" d="M24 4H8C5.8 4 4 5.8 4 8v12c0 2.2 1.8 4 4 4h12l6 6V8c0-2.2-1.8-4-4-4z" />
             </g>
             <text x="80" y="28" className="txt-badge">STAGE 06</text>
             <text x="80" y="48" className="txt-title">User Communication</text>
