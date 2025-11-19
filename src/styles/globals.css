@@ -140,6 +140,18 @@
 }
 
 @layer utilities {
+  .nodo-code .code-keyword {
+    color: #a6c8ff;
+  }
+
+  .nodo-code .code-string {
+    color: #ffd479;
+  }
+
+  .nodo-code .code-number {
+    color: #ff9ece;
+  }
+
   .visually-hidden {
     position: absolute !important;
     width: 1px !important;

@@ -1,4 +1,4 @@
-import { CONTAINER_CLASS, SECTION_SPACING_CLASS } from '../../constants/layout';
+import { CONTAINER_CLASS } from '../../constants/layout';
 
 const benchmarks = [
   {
@@ -41,7 +41,7 @@ const benchmarks = [
 
 export default function BenchmarksSection() {
   return (
-    <section className={SECTION_SPACING_CLASS} id="benchmarks">
+    <section className={`pt-14 sm:pt-20 lg:pt-28 pb-[80px] sm:pb-[90px] lg:pb-[100px]`} id="benchmarks">
       <div className={`${CONTAINER_CLASS} space-y-12`}>
         <div className="flex flex-col gap-6 lg:flex-row">
           <h2 className="flex-1 text-[32px] font-medium leading-[1.15] sm:text-[40px] lg:text-[48px]">

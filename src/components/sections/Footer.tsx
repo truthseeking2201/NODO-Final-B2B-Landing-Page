@@ -15,7 +15,7 @@ const socialIcons = ['/images/social-1.png', '/images/social-2.png', '/images/so
 
 export default function Footer() {
   return (
-    <footer className="bg-[#161617] pt-16 text-sm text-white">
+    <footer className="bg-[#161617] pt-[80px] sm:pt-[90px] lg:pt-[100px] text-sm text-white">
       <div className={`${CONTAINER_CLASS} space-y-16`}>
         <div className="flex flex-col gap-12 lg:flex-row">
           <div className="flex-1 space-y-6">

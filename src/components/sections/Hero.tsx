@@ -49,7 +49,7 @@ export default function Hero() {
             </div>
             <div className="flex flex-col gap-6 text-left lg:flex-row lg:items-end lg:justify-between lg:gap-10">
               <div className="space-y-6 lg:max-w-2xl">
-                <div className="grid gap-6 sm:grid-cols-3 sm:gap-6 lg:gap-8">
+                <div className="flex flex-col items-center gap-6 sm:flex-row sm:justify-center sm:gap-12 lg:gap-16">
                   {stats.map((stat) => (
                     <article key={stat.label} className="flex flex-col items-center gap-1 text-center">
                       <p className="bg-gradient-to-r from-white to-[#898989] bg-clip-text font-mono text-[10px] font-medium uppercase tracking-[1px] text-transparent whitespace-nowrap sm:text-[12px]">
@@ -69,7 +69,7 @@ export default function Hero() {
                   ))}
                 </div>
               </div>
-              <div className="flex flex-col items-center gap-3 text-white/70 sm:items-center lg:items-end">
+              <div className="flex flex-col items-center gap-3 text-white/70 sm:items-center lg:items-center">
                 <span className="bg-gradient-to-r from-white to-[#898989] bg-clip-text font-mono text-center text-[10px] font-medium uppercase tracking-[1px] text-transparent sm:text-[12px]">
                   SECURITY. AUDITED BY
                 </span>
