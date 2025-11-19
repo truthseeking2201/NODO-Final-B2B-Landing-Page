@@ -115,7 +115,7 @@ export default function NodoStrategySnippet({
   const lines = useMemo(() => code.split('\n'), [code]);
 
   return (
-    <div className="overflow-hidden rounded-[32px] bg-[#111111] shadow-[0_40px_120px_rgba(0,0,0,0.45)]">
+    <div className="overflow-hidden rounded-[24px] border border-[#242425] bg-[#161617] shadow-[0_40px_120px_rgba(0,0,0,0.45)]">
       <div className="flex flex-wrap items-center justify-between gap-3 border-b border-white/5 px-6 py-4 text-sm">
         <div>
           <p className="text-base font-semibold">{title}</p>
