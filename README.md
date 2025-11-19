@@ -1,79 +1,80 @@
 # NODO - B2B Landing Page
 
-Đây là repository chứa mã nguồn cho Landing Page B2B của dự án **NODO**. Trang web được thiết kế hiện đại, tối ưu hóa hiệu năng và tập trung vào việc giới thiệu các giải pháp công nghệ của NODO.
+This repository contains the source code for the **NODO** B2B Landing Page. The website is designed to be modern, performance-optimized, and focused on showcasing NODO's technological solutions.
 
-## 🌟 Giới thiệu
+## 🌟 Introduction
 
-NODO Landing Page được xây dựng để trình bày các giải pháp cơ sở hạ tầng, giám sát và bảo mật on-chain. Giao diện được thiết kế với phong cách chuyên nghiệp, sử dụng các hiệu ứng visual ấn tượng để thu hút khách hàng doanh nghiệp (B2B).
+The NODO Landing Page is built to present on-chain infrastructure, monitoring, and security solutions. The interface is designed with a professional style, utilizing impressive visual effects to attract B2B clients.
 
-## 🚀 Tính năng chính
+## 🚀 Key Features
 
-Trang landing page bao gồm các phần chính sau:
+The landing page includes the following main sections:
 
-- **Hero Section**: Giới thiệu ấn tượng với hiệu ứng visual từ Unicorn Studio.
-- **Stats Strip**: Dải thống kê các con số ấn tượng.
-- **Unified Architecture**: Minh họa kiến trúc hợp nhất của hệ thống.
-- **Core System Modules**: Giới thiệu các module cốt lõi của sản phẩm.
-- **Benchmarks**: So sánh hiệu năng và các chỉ số quan trọng (Coverage, Custody, Lending, etc.).
-- **Alert Monitoring**: Mô phỏng luồng cảnh báo on-chain (Onchain Alert Flow).
-- **Simple Deployment**: Hướng dẫn hoặc minh họa quy trình triển khai đơn giản.
-- **Partner Section**: Khu vực dành cho đối tác và kêu gọi hợp tác.
+- **Hero Section**: Impressive introduction with visual effects from Unicorn Studio.
+- **Stats Strip**: A strip displaying impressive statistical figures.
+- **Unified Architecture**: Illustrates the unified architecture of the system.
+- **Core System Modules**: Introduces the core modules of the product.
+- **Benchmarks**: Compares performance and key metrics (Coverage, Custody, Lending, etc.).
+- **Alert Monitoring**: Simulates the on-chain alert flow.
+- **Simple Deployment**: Guides or illustrates the simple deployment process.
+- **Partner Section**: Area for partners and collaboration calls.
 
-## 🛠 Công nghệ sử dụng
+## 🛠 Tech Stack
 
-Dự án được xây dựng dựa trên các công nghệ web hiện đại:
+The project is built using modern web technologies:
 
 - **Core**: [React](https://react.dev/) (v19), [TypeScript](https://www.typescriptlang.org/)
-- **Build Tool**: [Vite](https://vitejs.dev/) - cho tốc độ phát triển và build cực nhanh.
-- **Styling**: [Tailwind CSS](https://tailwindcss.com/) - framework CSS utility-first.
+- **Build Tool**: [Vite](https://vitejs.dev/) - for lightning-fast development and building.
+- **Styling**: [Tailwind CSS](https://tailwindcss.com/) - utility-first CSS framework.
 - **Animations/Effects**: [Unicorn Studio](https://www.unicorn.studio/) (unicornstudio-react).
 - **Linting**: ESLint.
 
-## 📦 Cài đặt và Chạy dự án
+## 📦 Installation & Setup
 
-Để chạy dự án này trên máy local, hãy làm theo các bước sau:
+To run this project locally, follow these steps:
 
-1.  **Clone repository:**
+1.  **Clone the repository:**
     ```bash
     git clone https://github.com/truthseeking2201/NODO-Final-B2B-Landing-Page.git
     cd NODO-Final-B2B-Landing-Page
     ```
 
-2.  **Cài đặt dependencies:**
+2.  **Install dependencies:**
     ```bash
     npm install
     ```
 
-3.  **Chạy môi trường phát triển (Development):**
+3.  **Run the development environment:**
     ```bash
     npm run dev
     ```
-    Truy cập `http://localhost:5173` trên trình duyệt để xem kết quả.
+    Access `http://localhost:5173` in your browser to view the result.
 
-4.  **Build cho Production:**
+4.  **Build for Production:**
     ```bash
     npm run build
     ```
 
-## 📂 Cấu trúc thư mục
+## 📂 Folder Structure
 
 ```
 src/
-├── assets/          # Tài nguyên tĩnh (images, icons)
-├── components/      # Các component React
-│   ├── layout/      # Navbar, Layout chung
-│   ├── sections/    # Các section chính của Landing Page (Hero, Features, Footer...)
-│   ├── visuals/     # Các component visual phức tạp (AlertFlow, StrategySnippet...)
-│   └── placeholders/# Các component placeholder
-├── constants/       # Các hằng số và cấu hình
-├── styles/          # Global styles và Tailwind config
-├── App.tsx          # Component chính
+├── assets/          # Static assets (images, icons)
+├── components/      # React components
+│   ├── layout/      # Navbar, General Layout
+│   ├── sections/    # Main Landing Page sections (Hero, Features, Footer...)
+│   ├── visuals/     # Complex visual components (AlertFlow, StrategySnippet...)
+│   └── placeholders/# Placeholder components
+├── constants/       # Constants and configuration
+├── styles/          # Global styles and Tailwind config
+├── App.tsx          # Main component
 └── main.tsx         # Entry point
 ```
 
-## 🤝 Đóng góp
+## 🤝 Contributing
 
-Mọi đóng góp đều được hoan nghênh. Vui lòng tạo Pull Request hoặc mở Issue nếu bạn tìm thấy lỗi hoặc muốn đề xuất tính năng mới.
+All contributions are welcome. Please create a Pull Request or open an Issue if you find any bugs or want to propose new features.
 
 ---
 © 2025 NODO. All rights reserved.
+**Made by Leon**
